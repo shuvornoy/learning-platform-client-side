@@ -1,0 +1,11 @@
+/* nav component */
+.brand img {
+  width: 32px;
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav .brand h3 {
+    display: none;
+  }
+}
