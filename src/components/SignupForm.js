@@ -1,44 +1,98 @@
+import { useContext } from "react";
 import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { Link} from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import Button from "./Button";
 import Checkbox from "./Checkbox";
 import Form from "./Form";
 import TextInput from "./TextInput";
 
+
 export default function SignupForm() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [agree, setAgree] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
+  const [error, setError] = useState('');
+    const [accepted, setAccepted] = useState(false);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState();
 
-  const { signup } = useAuth();
-  const history = useHistory();
+
+
+
+  // const [username, setUsername] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [agree, setAgree] = useState("");
+  // const [photoURL, setPhotoURL] = useState("");
+
+  
+  // const [loading, setLoading] = useState();
+
+
+  // const history = useHistory();
+
 
   async function handleSubmit(e) {
-    e.preventDefault();
+       e.preventDefault();
+       const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+        createUser(email, password)
+            .then(result => {
+            const user = result.user;
+            console.log(user);
+            setError('');
+            form.reset();
+            handleUpdateUserProfile(name, photoURL);
+            handleEmailVerification();
+                // toast.success('Please verify your email address.')
+            })
+            .catch(e => {
+                console.error(e);
+                setError(e.message);
+            });
+}
+
+const handleUpdateUserProfile = (name, photoURL) => {
+  const profile = {
+      displayName: name,
+      photoURL: photoURL
+  }
+
+  updateUserProfile(profile)
+      .then(() => { })
+      .catch(error => console.error(error));
+}
+
+const handleEmailVerification  = () => {
+  verifyEmail()
+  .then(() =>{})
+  .catch(error => console.error(error));
+}
+
+const handleAccepted = event => {
+  setAccepted(event.target.checked)
+}
 
     // do validation
-    if (password !== confirmPassword) {
-      return setError("Passwords don't match!");
-    }
+    // if (password !== confirmPassword) {
+    //   return setError("Passwords don't match!");
+    // }
 
-    try {
-      setError("");
-      setLoading(true);
-      await signup(email, password, username, photoURL);
-      history.push("/");
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-      setError("Failed to create an account!");
-    }
-  }
+    // try {
+    //   setError("");
+    //   setLoading(true);
+    //   await(email, password, username, photoURL);
+    //   // history.push("/");
+    // } catch (err) {
+    //   console.log(err);
+    //   setLoading(false);
+    //   setError("Failed to create an account!");
+    // }
+  
 
   return (
     <Form style={{ height: "500px" }} onSubmit={handleSubmit}>
@@ -47,16 +101,16 @@ export default function SignupForm() {
         placeholder="Enter your full name"
         icon="person"
         required
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        name="username"
+        
       />
       <TextInput
         type="text"
         placeholder="photo url"
         icon="person"
         required
-        value={photoURL}
-        onChange={(e) => setPhotoURL(e.target.value)}
+        name="photoURL"
+        
       />
 
       <TextInput
@@ -64,8 +118,8 @@ export default function SignupForm() {
         required
         placeholder="Enter email"
         icon="alternate_email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        name="email"
+        
       />
 
       <TextInput
@@ -73,8 +127,8 @@ export default function SignupForm() {
         required
         placeholder="Enter password"
         icon="lock"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        name="password"
+        
       />
 
       <TextInput
@@ -89,11 +143,10 @@ export default function SignupForm() {
       <Checkbox
         required
         text="I agree to the Terms &amp; Conditions"
-        value={agree}
-        onChange={(e) => setAgree(e.target.value)}
+        onClick={handleAccepted}
       />
 
-      <Button disabled={loading} type="submit">
+      <Button  type="submit" disabled={!accepted}>
         <span>Submit Now</span>
       </Button>
 

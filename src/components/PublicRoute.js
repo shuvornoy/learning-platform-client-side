@@ -1,13 +1,15 @@
-import { Redirect, Route } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useContext } from "react";
+import { Link, Route,  } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
+
 
 function PublicRoute({ component: Component, ...rest }) {
-  const { currentUser } = useAuth();
+  const { user } = useContext(AuthContext);
 
-  return !currentUser ? (
+  return !user ? (
     <Route {...rest}>{(props) => <Component {...props} />}</Route>
   ) : (
-    <Redirect to="/" />
+    <Link to="/" />
   );
 }
 export default PublicRoute;

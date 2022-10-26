@@ -1,17 +1,58 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { Link, useLocation, useNavigate} from "react-router-dom";
+import { AuthContext } from "../contexts/AuthContext";
 import Button from "./Button";
 import Form from "./Form";
 import TextInput from "./TextInput";
 
+
 function LoginForm() {
+    const [error, setError] = useState('');
+    const { signIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    const handleSubmit = event => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      signIn(email, password)
+          .then(result => {
+              const user = result.user;
+              console.log(user);
+              form.reset();
+              setError('');
+              if(user.emailVerified){
+                  navigate(from, {replace: true});
+              }
+              else{
+                  // toast.error('Your email is not verified. Please verify your email address.')
+              }
+          })
+          .catch(error => {
+              console.error(error)
+              setError(error.message);
+          })
+          .finally(() => {
+              setLoading(false);
+          })
+  }
+
+
+
+  const { providerLogin } = useContext(AuthContext);
+
   const googleProvider = new GoogleAuthProvider();
 
   const handleGoogleSignIn = () => {
+    console.log(handleGoogleSignIn)
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
@@ -19,52 +60,18 @@ function LoginForm() {
       })
       .catch((error) => console.error(error));
   };
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState();
-
-  const { login, providerLogin } = useAuth();
-  const history = useHistory();
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    try {
-      setError("");
-      setLoading(true);
-      await login(email, password);
-      history.push("/");
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-      setError("Failed to login!");
-    }
-  }
+  
 
   return (
   
     <Form onSubmit={handleSubmit}>
-      <TextInput
-        type="text"
-        placeholder="Enter email"
-        icon="alternate_email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <TextInput type="text" placeholder="Enter email" icon="alternate_email" name="email"
+        required/>
 
-      <TextInput
-        type="password"
-        placeholder="Enter password"
-        icon="lock"
-        required
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+      <TextInput type="password" placeholder="Enter password" icon="lock" name="password"
+        required/>
 
-      <Button type="submit" disabled={loading}>
+      <Button type="submit">
         <span>Login Now</span>
       </Button>
       <ButtonGroup vertical>

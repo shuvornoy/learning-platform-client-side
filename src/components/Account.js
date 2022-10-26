@@ -1,37 +1,45 @@
+import { useContext } from "react";
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/Account.module.css";
 
 function Account() {
-  const { currentUser, logout } = useAuth();
+  const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
   return (
     <div className={classes.account}>
-      {currentUser ? (
+
+      {user ? (
         <>
           <Link to="/profile">
-            {currentUser?.photoURL ? (
+            {user?.photoURL ? (
               <Image
                 style={{ height: "30px" }}
                 roundedCircle
-                src={currentUser?.photoURL}
-                title={currentUser?.displayName}
+                src={user?.photoURL}
+                title={user?.displayName}
               ></Image>
             ) : (
               <span
                 className="material-icons-outlined"
-                title={currentUser?.displayName}
+                title={user?.displayName}
               >
                 account_circle
               </span>
             )}
           </Link>
 
-          <span>{currentUser?.displayName}</span>
+          <span>{user?.displayName}</span>
           <span
             className="material-icons-outlined"
             title="Logout"
-            onClick={logout}
+            onClick={handleLogOut}
           >
             {" "}
             logout{" "}
