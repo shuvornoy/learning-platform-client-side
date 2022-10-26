@@ -3,6 +3,7 @@ import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import classes from "../styles/Account.module.css";
+import Theme from "./Them/Them";
 
 function Account() {
   const { user, logOut } = useContext(AuthContext);
@@ -51,7 +52,9 @@ function Account() {
           <Link to="/login">Login</Link>
         </>
       )}
+      <Theme />
     </div>
+    
   );
 }
 export default Account;

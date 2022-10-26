@@ -18,17 +18,7 @@ export default function SignupForm() {
 
 
 
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [agree, setAgree] = useState("");
-  // const [photoURL, setPhotoURL] = useState("");
 
-  
-  // const [loading, setLoading] = useState();
-
-
-  // const history = useHistory();
 
 
   async function handleSubmit(e) {

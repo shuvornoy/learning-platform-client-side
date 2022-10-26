@@ -1,0 +1,15 @@
+.course-cart{
+}
+.card-details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.course-details{
+    border-top: 1px solid #ddd;
+}
+.course-img img{
+    width: 350px;
+    height: 350px;
+
+}

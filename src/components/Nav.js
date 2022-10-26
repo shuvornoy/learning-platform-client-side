@@ -20,10 +20,10 @@ function Navb() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link to="/home">Home</Link>
-            <Link to="/link">Link</Link>
-            <Link to="#home">Home</Link>
-            <Link to="#link">Link</Link>
+            <Link to="/home">HOME</Link>
+            <Link to="/course">COURSES</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/blog">BLOG</Link>
           </Nav>
         </Navbar.Collapse>
         <Account />
