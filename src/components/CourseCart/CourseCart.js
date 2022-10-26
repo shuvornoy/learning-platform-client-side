@@ -2,17 +2,16 @@ import React from 'react';
 import {useNavigate} from "react-router-dom";
 import './CoursesCart.css'
 
-
 const CourseCart = ({courses}) => {
     const {title, image, seatsLeft,id} = courses;
    // console.log(courses)
 
-    const navigate = useNavigate()
+ const navigate = useNavigate()
 
  const Submit = (id)=>{
     navigate(`/courses/${id}`)
  }
- console.log(id)
+ //console.log(id)
 
     return (
      <>
