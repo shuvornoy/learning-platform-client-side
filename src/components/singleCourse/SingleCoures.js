@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import SiteCard from '../SiteCard/SiteCard';
-import'./SingleCourse.css'
+import'./SingleCourse.css';
+import Button from 'react-bootstrap/Button';
 
 const SingleCoures = () => {
 
@@ -32,6 +33,9 @@ const SingleCoures = () => {
                 </div>
                 <h4>Seats Left :{seatsLeft}</h4>
                 <h4>Price : {price}</h4>
+                <Link to='/premium'>
+                <Button variant="primary">Primary</Button>
+                </Link>
             </div>
            </div>
             </section>
