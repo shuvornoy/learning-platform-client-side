@@ -1,20 +1,27 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
+
+import { useLoaderData } from 'react-router-dom';
+import CoursesCart from '../CoursesCart/CoursesCart';
 import Lefside from '../leftside/Lefside';
 
 const Courses = () => {
+  const courses = useLoaderData();
     return (
-        <Container>
-          <Row>
-            <Col lg="4">
+      <div>
+       <h3>home {courses.length}</h3>
+        <div className="container">
+          <div className="row">
+            <div className="col-9">
+            {
+               courses.map(singleCourse =><CoursesCart key={singleCourse._id} singleCourse={singleCourse} ></CoursesCart> )
+            }
+            </div>
+            <div className="col-3">
               <Lefside />
-            </Col>
-            <Col lg="8">
-              <Outlet></Outlet>
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
+        </div>
     );
 };
 

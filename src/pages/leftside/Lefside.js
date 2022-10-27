@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ListGroup from "react-bootstrap/ListGroup";
   import { ToastContainer, toast } from "react-toastify";
   import "react-toastify/dist/ReactToastify.css";
+  
 const Lefside = () => {
     const [courses, setCourses] = useState([]);
     useEffect(() =>{
@@ -18,7 +19,7 @@ const Lefside = () => {
       )};
     return (
       <div>
-        <h4> All Courses: {courses.length} </h4>
+        {/* <h4> All Courses: {courses.length} </h4> */}
         {courses.map((course) => (
           <p key={course.id}>
             <Link to={`/course/${course.id}`}>

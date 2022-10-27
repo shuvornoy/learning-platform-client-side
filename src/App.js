@@ -11,6 +11,7 @@ import Register from './Authuntication/Register/Register';
 import Terms from './tersmsAndCondition/Terms';
 import Blog from './Blogs/Blog';
 import PrivateRoute from './privateRoute/PrivateRoute';
+import Courses from './pages/Course/Course';
 
 function App() {
   const routes = createBrowserRouter([
@@ -21,6 +22,10 @@ function App() {
         {
           path: "/",
           element: <Home></Home>,
+        },
+        {
+          path: "/course",
+          element: <Courses />,
           loader: () => fetch("http://localhost:5000/courses"),
         },
         {

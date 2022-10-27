@@ -4,17 +4,16 @@ import { Outlet } from 'react-router-dom';
 
 import Footer from '../pages/footer/Footer';
 import Header from '../pages/header/Header';
-import Lefside from '../pages/leftside/Lefside';
-import RightSide from '../pages/Rightside/RightSide';
+
 
 const MainPage = () => {
     return (
       <div>
-        <div>
+       
           <Header></Header>
-        </div>
+        <Outlet />
 
-        <Container>
+        {/* <Container>
           <Row>
             <Col lg="3">
               <Lefside></Lefside>
@@ -28,7 +27,7 @@ const MainPage = () => {
             </Col>
           </Row>
         </Container>
-        <Footer></Footer>
+        <Footer></Footer> */}
       </div>
     );
 };
