@@ -1,0 +1,11 @@
+.blog-container{
+    margin-top: 50px;
+}
+.blog {
+    border: 2px solid #d9f5d9;
+    border-radius: 10px;
+    margin-right: 10px ,auto;
+    margin: 10px;
+    padding: 10px;
+    background: cornflowerblue;
+}

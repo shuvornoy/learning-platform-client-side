@@ -12,6 +12,8 @@ import Terms from './tersmsAndCondition/Terms';
 import Blog from './Blogs/Blog';
 import PrivateRoute from './privateRoute/PrivateRoute';
 import Courses from './pages/Course/Course';
+import Faq from './pages/Faq/Faq';
+import CheckOut from './pages/CheckOut/CheckOut';
 
 function App() {
   const routes = createBrowserRouter([
@@ -36,11 +38,7 @@ function App() {
         },
         {
           path: "/coursedetails/:id",
-          element: (
-            <PrivateRoute>
-              <CourseDetails></CourseDetails>
-            </PrivateRoute>
-          ),
+          element:<CourseDetails></CourseDetails>,
           loader: ({ params }) =>
             fetch(`http://localhost:5000/courses/${params.id}`),
         },
@@ -58,12 +56,20 @@ function App() {
           element: <Terms></Terms>,
         },
         {
+          path: "/faq",
+          element: <Faq />,
+        },
+        {
           path: "/blog",
-          element: (
+          element: 
             <PrivateRoute>
               <Blog></Blog>
             </PrivateRoute>
-          ),
+          ,
+        },
+        {
+          path: "/checkout",
+          element: <PrivateRoute><CheckOut /></PrivateRoute>,
         },
         {
           path: "*",

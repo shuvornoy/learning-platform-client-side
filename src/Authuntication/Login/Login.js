@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import AuthProvider, { AuthContext } from '../../Contexts/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
+import  { AuthContext } from '../../Contexts/AuthProvider';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { ButtonGroup } from 'react-bootstrap';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -64,14 +64,12 @@ const from = location.state?.from?.pathname || '/';
 
     }
     return (
-      <div>
-        <Form onClick={handleSubmit}>
+      <div className='col-md-4 mx-auto'>
+        <Form onClick={handleSubmit} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" name="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+            
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -82,29 +80,16 @@ const from = location.state?.from?.pathname || '/';
               placeholder="Password"
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label={
-                <>
-                  {" "}
-                  Accept<Link to="/terms"> Terms and condition</Link>{" "}
-                </>
-              }
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            login
+
+          <Button className='w-100' variant="primary" type="submit">
+            login now
           </Button>
           {<p className="text-danger">{error}</p>}
         </Form>
         <div>
-          <ButtonGroup vertical>
-            <Button
-              onClick={handleGoogleSign}
-              className="mb-2"
-              variant="outline-dark"
-            >
+          <ButtonGroup className='w-100' vertical>
+            <Button onClick={handleGoogleSign} variant="outline-dark"
+            className='mb-2'>
               {" "}
               <FaGoogle></FaGoogle> login with google{" "}
               <ToastContainer></ToastContainer>

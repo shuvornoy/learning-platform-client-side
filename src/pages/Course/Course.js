@@ -8,15 +8,15 @@ const Courses = () => {
   const courses = useLoaderData();
     return (
       <div>
-       <h3>home {courses.length}</h3>
+       
         <div className="container">
           <div className="row">
-            <div className="col-9">
+            <div className="col-xl-8 col-md-8">
             {
                courses.map(singleCourse =><CoursesCart key={singleCourse._id} singleCourse={singleCourse} ></CoursesCart> )
             }
             </div>
-            <div className="col-3">
+            <div className="col-xl-4 col-md-4">
               <Lefside />
             </div>
           </div>

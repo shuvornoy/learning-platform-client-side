@@ -1,8 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CoursesCart from '../../CoursesCart/CoursesCart';
-import CourseDetails from './CourseDetails';
-import SingleDetail from './SingleDetail';
+
 
 const Course = () => {
     const courses = useLoaderData();

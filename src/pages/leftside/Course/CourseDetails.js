@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { Form, FormCheck } from 'react-bootstrap';
+import {  FormCheck } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
@@ -10,12 +10,12 @@ import { Link } from 'react-router-dom';
 
 
 const CourseDetails = () => {
+  const details = useLoaderData();
 
   const [accepted, setAccepted] = useState(false) 
 
-    const details = useLoaderData();
-     const { balance, registered,tags, company, address, about, name,_id,id, picture } = details;
-    console.log(details);
+     const {title, price,  name, picture } = details;
+    
   const notify = () => {
     toast.success("Congratulations! you have got access.");
   };
@@ -28,15 +28,11 @@ const CourseDetails = () => {
        <Card>
          <Card.Img variant="top" src={picture} />
          <Card.Body>
-           <h6>Company: {company} </h6>
+           <h6>Title: {title} </h6>
            <Card.Title>{name}</Card.Title>
-           <Card.Text>{about}</Card.Text>
-           <h6 className=""> Address: {address}</h6>
-           <Card.Text>
-             <h5 className="text-danger">Price: {balance}</h5>
-               <h5 className="text-primary">Registration ID: {registered}</h5>
-             
-              <FormCheck
+            <Card.Text>
+             <h5 className="text-danger">Price: {price}</h5>
+             <FormCheck
               type="checkbox"
               onClick={handleAccepted}
               label={
@@ -46,15 +42,13 @@ const CourseDetails = () => {
                 </>
               }
               ></FormCheck>
-           
            </Card.Text>
-           
+           <Link to='/checkout'>
            <Button onClick={notify} variant="primary" disabled={!accepted}>
              {" "}
              <ToastContainer /> Go somewhere
            </Button>
-
-           <p> Tags:{tags} </p>
+           </Link>
          </Card.Body>
        </Card>
      </div>

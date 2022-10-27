@@ -1,14 +1,10 @@
 import React from 'react';
-
-import { Form } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
 
 const CoursesCart = ({singleCourse}) =>{
-
-    
-    const { balance, address, about, details, name,_id,id, picture } = singleCourse;
+    const { total_sit, details, _id, picture, price, name } = singleCourse;
 
     
     return (
@@ -16,7 +12,10 @@ const CoursesCart = ({singleCourse}) =>{
       <Card>
         <Card.Img variant="top" src={picture} />
         <Card.Body>
-          <Card.Title>name: {name}</Card.Title>
+          <Card.Title>
+            <h1>Name: {name}</h1>
+          </Card.Title>
+          <h3>Total sit :{total_sit}</h3>
           <Card.Text>
             {" "}
             {details.length > 200 ? (
@@ -29,6 +28,7 @@ const CoursesCart = ({singleCourse}) =>{
             )}
             
           </Card.Text>
+          <h5 className="text-primary">Price: {price}</h5>
         
             <Link
               className="d-flex align-items-center justify-content-between"
@@ -37,9 +37,7 @@ const CoursesCart = ({singleCourse}) =>{
               <Button  variant="primary">
                 Details
               </Button>
-              <h5 className="text-primary">Price: {balance}</h5>
             </Link>
-        
         </Card.Body>
       </Card>
     );

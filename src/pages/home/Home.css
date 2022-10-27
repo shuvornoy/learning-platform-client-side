@@ -1,12 +1,13 @@
 
 .benar-section{
+    padding: 20px;
     width: 100%;
     height: 100vh;
     background-color: #E2D9FD;
 }
-.benar-img{
+.benar-img img{
     width: 100%;
-    height: 90vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,9 +19,7 @@
     width: 100%;
     height: 100vh;
 }
-.benar-details{
 
-}
 .benar-details h1{
     font-size: 50px;
     font-weight: 650;
@@ -43,4 +42,17 @@
 }
 .benar-details button:hover{
     background-color: #4b05b6;
+}
+
+@media only screen and (min-width:250px) and (max-width:767px){
+    .benar-section{
+        height: 120vh;
+        padding: 50px 0px;
+    }
+   
+    .benar-img img{
+        display: none;
+    }
+
+
 }

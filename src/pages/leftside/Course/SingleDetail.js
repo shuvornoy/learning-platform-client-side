@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 const SingleDetail = ({singleData}) => {
     console.log(singleData);
-    const { about, name, balance, greeting, registered , picture} = singleData;
+    const { about, name, picture} = singleData;
     return (
       <div>
         <Row xs={1} md={2} className="g-4">
