@@ -71,7 +71,6 @@ function App() {
         {
           path: "/checkout",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
-        
             
         },
         {
