@@ -35,7 +35,7 @@ function App() {
           path: "/course/:id",
           element: <Course></Course>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/index/${params.id}`),
+            fetch(`http://localhost:5000/category/${params.id}`),
         },
         {
           path: "/coursedetails/:id",
@@ -71,9 +71,9 @@ function App() {
         {
           path: "/checkout",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
-          loader: () => fetch("http://localhost:5000/courses"),
-          
-          
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/category/${params.id}`),
+            
         },
         {
           path: "*",

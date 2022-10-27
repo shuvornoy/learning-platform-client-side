@@ -3,12 +3,21 @@ import { useLoaderData } from 'react-router-dom';
 import CoursesCart from '../../CoursesCart/CoursesCart';
 
 
+
 const Course = () => {
-    const courses = useLoaderData();
+    const course = useLoaderData();
     return (
-      <div>
-        <h3>lo course: {courses.length} </h3>
-        {courses.map(singleCourse => <CoursesCart key={singleCourse.id} singleCourse={singleCourse}></CoursesCart> )}
+      <div className='container'>
+        <h3>Total Course: {course.length} </h3>
+        
+       
+        {
+        course.map(singleCourse => <CoursesCart 
+          key={singleCourse.id}
+          singleCourse={singleCourse}>
+
+          </CoursesCart> )
+        }
       </div>
     );
 };
