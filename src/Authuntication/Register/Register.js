@@ -44,7 +44,7 @@ const Register = () => {
 
      };
      return (
-      <div className='col-md-4 mx-auto'>
+      <div className='col-md-4 mx-auto mt-5'>
        <Form onClick={handleSubmit}>
          <Form.Group className="mb-3" controlId="formBasicEmail">
            <Form.Label>Name</Form.Label>

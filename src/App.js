@@ -1,6 +1,6 @@
 
 import './App.css';
-import { createBrowserRouter, RouterProvider, routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import MainPage from './layOut/MainPage';
 import Home from './pages/home/Home';
 import Course from './pages/leftside/Course/Course';
@@ -14,6 +14,7 @@ import PrivateRoute from './privateRoute/PrivateRoute';
 import Courses from './pages/Course/Course';
 import Faq from './pages/Faq/Faq';
 import CheckOut from './pages/CheckOut/CheckOut';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 function App() {
   const routes = createBrowserRouter([
@@ -70,10 +71,11 @@ function App() {
         {
           path: "/checkout",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
+          loader: () => fetch("http://localhost:5000/courses"),
         },
         {
           path: "*",
-          element: <h3 className='mx-auto'> 404: oppps! Rout not found </h3>,
+          element: <ErrorPage />,
         },
       ],
     },

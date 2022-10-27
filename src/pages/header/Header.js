@@ -28,7 +28,7 @@ const Header = () => {
 
 
     return (
-      <div className="mb-5">
+      <div>
         <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
           <Container>
             <Image style={{ height: "40px" }} roundedCircle src={img}></Image>

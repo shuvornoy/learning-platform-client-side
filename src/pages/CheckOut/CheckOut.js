@@ -3,10 +3,13 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useLoaderData } from 'react-router-dom';
+
 import { AuthContext } from '../../Contexts/AuthProvider';
 
-const CheckOut = ({singleCourse}) => {
+const CheckOut = () => {
     const {user} = useContext(AuthContext);
+    const {check} = useLoaderData()
+    console.log(check)
 
     
     return (
@@ -16,6 +19,7 @@ const CheckOut = ({singleCourse}) => {
             <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>
                 <Card.Text>
+                    
                 Some quick example text to build on the card title and make up the
                 bulk of the card's content.
                 </Card.Text>

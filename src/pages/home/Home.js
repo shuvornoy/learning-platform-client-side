@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div className='container'>
+        <div>
             <section className="benar-section">
-             <div className="">
+             <div className="container">
                 <div className="row">
                     <div className="col-xl-6 col-md-6 benar">
                        <div className="benar-details">
