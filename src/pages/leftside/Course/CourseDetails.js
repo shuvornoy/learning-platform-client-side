@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import ReactDOM from "react-dom";
 import { useLoaderData } from 'react-router-dom';
 import {  FormCheck } from 'react-bootstrap';
 import Button from "react-bootstrap/Button";
@@ -7,6 +8,11 @@ import Card from "react-bootstrap/Card";
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Pdf from "react-to-pdf";
+
+
+
+const ref = React.createRef();
 
 
 const CourseDetails = () => {
@@ -26,11 +32,13 @@ const CourseDetails = () => {
    return (
 
      <div className='container'>
-       <Card>
+       <Card ref={ref}>
          <Card.Img variant="top" src={picture} />
          <Card.Body>
            <h6>Title: {title} </h6>
            <Card.Title>{name}</Card.Title>
+           </Card.Body>
+           </Card>
             <Card.Text>
              <h5 className="text-danger">Price: {price}</h5>
              <FormCheck
@@ -47,11 +55,14 @@ const CourseDetails = () => {
            <Link to='/checkout'>
            <Button onClick={notify} variant="primary" disabled={!accepted}>
              {" "}
-             <ToastContainer /> Go somewhere
+             <ToastContainer /> Get Premium
            </Button>
            </Link>
-         </Card.Body>
-       </Card>
+           <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+      </Pdf>
+         
+       
      </div>
    );}
 export default CourseDetails;

@@ -71,8 +71,7 @@ function App() {
         {
           path: "/checkout",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
-          loader: ({ params }) =>
-            fetch(`http://localhost:5000/category/${params.id}`),
+        
             
         },
         {

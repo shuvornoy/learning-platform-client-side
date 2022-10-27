@@ -1,23 +1,21 @@
 import React from 'react';
 import { useContext } from 'react';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { useLoaderData } from 'react-router-dom';
-
+import { Button, Card } from 'react-bootstrap';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import img from './congratulation.jpg'
+
 
 const CheckOut = () => {
     const {user} = useContext(AuthContext);
-    const check = useLoaderData()
+    
   
-    console.log(check)
+
 
     
     return (
         <div>
-            <h2>{check.name}</h2>
-        <Card className='mx-auto' style={{ width: '25rem' }}>
-            <Card.Img variant="top" src={check.picture} alt='picture' />
+            <Card className='mx-auto' style={{ width: '25rem' }}>
+            <Card.Img variant="top" src={img} alt='picture' />
             <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>
                 <Card.Text>
@@ -27,7 +25,7 @@ const CheckOut = () => {
                 </Card.Text>
                 <Button variant="primary">Go somewhere</Button>
             </Card.Body>
-        </Card>
+        </Card> 
     </div>
     );
 };
