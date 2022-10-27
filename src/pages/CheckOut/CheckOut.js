@@ -8,14 +8,16 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const CheckOut = () => {
     const {user} = useContext(AuthContext);
-    const {check} = useLoaderData()
+    const check = useLoaderData()
+  
     console.log(check)
 
     
     return (
         <div>
+            <h2>{check.name}</h2>
         <Card className='mx-auto' style={{ width: '25rem' }}>
-            <Card.Img variant="top" src="" alt='picture' />
+            <Card.Img variant="top" src={check.picture} alt='picture' />
             <Card.Body>
                 <Card.Title>{user.displayName}</Card.Title>
                 <Card.Text>

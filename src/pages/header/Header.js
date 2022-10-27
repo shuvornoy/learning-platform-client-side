@@ -4,7 +4,6 @@ import { Button, Image } from 'react-bootstrap';
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -17,7 +16,6 @@ import { toast, ToastContainer } from 'react-toastify';
 import Toggle from '../../Toggle/Toggle';
 const Header = () => {
     const {user, logOut} = useContext(AuthContext)
-    console.log(user);
     
     const handleLogOut = () => {
         toast('logout successfully')

@@ -72,6 +72,8 @@ function App() {
           path: "/checkout",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
           loader: () => fetch("http://localhost:5000/courses"),
+          
+          
         },
         {
           path: "*",

@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 const CourseDetails = () => {
   const details = useLoaderData();
+  console.log(details)
 
   const [accepted, setAccepted] = useState(false) 
 
