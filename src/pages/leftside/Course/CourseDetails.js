@@ -24,7 +24,7 @@ const CourseDetails = () => {
 }
    return (
 
-     <div>
+     <div className='container'>
        <Card>
          <Card.Img variant="top" src={picture} />
          <Card.Body>

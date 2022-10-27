@@ -11,7 +11,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
   import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-const { signIn,gitProvider, providerLogin } = useContext(AuthContext);
+const { signIn, gitProvider, providerLogin } = useContext(AuthContext);
 const [error, setError] = useState('');
     
 const navigate = useNavigate();
