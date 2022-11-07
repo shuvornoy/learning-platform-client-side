@@ -55,7 +55,7 @@ const CourseDetails = () => {
               label={
                 <>
                   {" "}
-                  Accept<Link to="/terms"> Terms and condition</Link>{" "}
+                  Accept<Link to="/terms"> Terms and conditions</Link>{" "}
                 </>
               }
               ></FormCheck>
