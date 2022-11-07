@@ -7,7 +7,6 @@ import Course from './pages/leftside/Course/Course';
 import CourseDetails from './pages/leftside/Course/CourseDetails';
 import Login from './Authuntication/Login/Login';
 import Register from './Authuntication/Register/Register';
-
 import Terms from './tersmsAndCondition/Terms';
 import Blog from './Blogs/Blog';
 import PrivateRoute from './privateRoute/PrivateRoute';
@@ -29,19 +28,19 @@ function App() {
         {
           path: "/course",
           element: <Courses />,
-          loader: () => fetch("http://localhost:5000/courses"),
+          loader: () => fetch("https://web-tecnology-server.vercel.app/courses"),
         },
         {
           path: "/course/:id",
           element: <Course></Course>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/category/${params.id}`),
+            fetch(`https://web-tecnology-server.vercel.app/category/${params.id}`),
         },
         {
           path: "/coursedetails/:id",
           element:<CourseDetails></CourseDetails>,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/courses/${params.id}`),
+            fetch(`https://web-tecnology-server.vercel.app/courses/${params.id}`),
         },
         
         {
@@ -69,7 +68,7 @@ function App() {
           ,
         },
         {
-          path: "/checkout",
+          path: "/checkout/:id",
           element: <PrivateRoute><CheckOut /></PrivateRoute>,
             
         },

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import  { AuthContext } from '../../Contexts/AuthProvider';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { ButtonGroup } from 'react-bootstrap';
@@ -25,6 +25,7 @@ const from = location.state?.from?.pathname || '/';
        providerLogin(gProvider)
          .then((result) => {
            const user = result.user;
+           navigate(from, {replace: true});
              toast.success("Wow! Google logged Successfully.");
            console.log(user);
          })
@@ -35,6 +36,7 @@ const from = location.state?.from?.pathname || '/';
         gitProvider(gitpro)
         .then(result => {
             const user = result.user;
+            navigate(from, {replace: true});
              toast.success("Wow! Github logged Successfully.");
             console.log(user)
         })
@@ -85,6 +87,7 @@ const from = location.state?.from?.pathname || '/';
             login now
           </Button>
           {<p className="text-danger">{error}</p>}
+          <p>CreateNew Account <Link to='/register'>Register Now</Link></p>
         </Form>
         <div>
           <ButtonGroup className='w-100' vertical>

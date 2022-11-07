@@ -9,7 +9,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 const Lefside = () => {
     const [courses, setCourses] = useState([]);
     useEffect(() =>{
-        fetch("http://localhost:5000/news-categories")
+        fetch("https://web-tecnology-server.vercel.app/news-categories")
         .then(res => res.json())
         .then(data => setCourses(data))
     }, [])

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
@@ -71,6 +72,7 @@ const Register = () => {
            Register
          </Button>
          {<p className="text-danger">{error}</p>}
+         <p>Already Have an Account <Link to='/login'>Login Now</Link></p>
        </Form>
        </div>
      );
